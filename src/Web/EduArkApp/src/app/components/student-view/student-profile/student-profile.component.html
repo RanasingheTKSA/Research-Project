@@ -1,0 +1,59 @@
+<section  class="main-content">
+	<ul class="breadcrumb breadcrumb-style">
+		<li class="breadcrumb-item">
+			<h5 class="page-title m-b-0">Profile</h5>
+		</li>
+		<li class="breadcrumb-item bcrumb-1">
+			<a routerLink="/dashboard/main"> <i class="fas fa-user font-17"></i></a>
+		</li>
+		<li class="breadcrumb-item">Student Profile</li>
+	</ul>
+	<hr />
+	<div class="section-body">
+		<div
+			class="d-flex align-items-center p-3 rounded shadow"
+			[style]="{ width: '100%', backgroundImage: 'linear-gradient(to right, #18E8DA, #5785E7)' }"
+		>
+			<div class="w-100 d-flex flex-row align-items-center justify-content-bitween">
+				<img
+					[src]=""
+					alt="logo"
+					class="rounded-circle m-5 shadow"
+					width="200"
+					height="200"
+					style="border: 10px solid #fff"
+				/>
+				<div class="w-50 d-flex flex-column align-items-center">
+					<h1 class="text-white">Welcome Pasindu !!</h1>
+					<br />
+					<div class="d-flex flex-row w-75">
+						<ul class="list-group list-group-flush w-100 bg-transparent text-end"></ul>
+						<ul class="list-group list-group-flush w-100 bg-transparent h5 text-start">
+							<li class="list-group-item bg-transparent h5" style="font-weight: bold; font-size: 40px">7 A</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row row-cols-auto mt-4">
+			<div  class="col">
+				<!-- <p-card
+					routerLink="/student/student-lesson/lesson-view/lesson-view"
+					[header]="subject.name"
+					[subheader]="getSubjectCategories(subject.subjectCategory)"
+					[style]="{ width: '200px', height: '180px' }"
+				>
+				</p-card> -->
+				<p>Science</p>
+				<div class="card" style="width: 18rem;">
+					
+					<div class="card-body">
+					  <h5 class="card-title">Science</h5>
+					  <a href="/student/student-lesson/lesson-view/lesson-view" class="btn btn-primary">Go </a>
+					</div>
+				  </div>
+				<br />
+			</div>
+		</div>
+	</div>
+</section>

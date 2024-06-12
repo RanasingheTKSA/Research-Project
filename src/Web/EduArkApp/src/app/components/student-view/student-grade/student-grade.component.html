@@ -1,0 +1,40 @@
+<section class="main-content">
+	<p-confirmDialog
+		[style]="{ width: '25vw' }"
+		acceptButtonStyleClass="p-button-raised p-button-danger"
+		rejectButtonStyleClass="p-button-raised p-button-success"
+	></p-confirmDialog>
+
+	<ul class="breadcrumb breadcrumb-style">
+		<li class="breadcrumb-item">
+			<h5 class="page-title m-b-0">STUDENT [ LESSONS ]</h5>
+		</li>
+		<li class="breadcrumb-item bcrumb-1">
+			<a routerLink="/dashboard/main"> <i class="fas fa-home font-17"></i></a>
+		</li>
+		<li class="breadcrumb-item">GRADE</li>
+	</ul>
+
+	<p-divider></p-divider>
+
+	<!-- <div class="card flex justify-content-center">
+        <p-tree class="w-full md:w-30rem" [value]="files"></p-tree>
+    </div> -->
+
+	<p-accordion [activeIndex]="selectedLessonIndex">
+		<ng-container *ngFor="let grade of listOfAcademicLevels">
+			<p-accordionTab header="{{ grade.name }}" (click)="getSubjectsMasterDataByAcademicLevelId(grade.id)">
+				<p>The subjects are as follows.</p>
+				<div class="row">
+					<div class="col-md-2 col-sm-2 pt-2" *ngFor="let item of listOfSubjects">
+						<p-button
+							label="{{ item.name }}"
+							styleClass="p-button-outlined"
+							(click)="viewLessons(grade.id, item.id)"
+						></p-button>
+					</div>
+				</div>
+			</p-accordionTab>
+		</ng-container>
+	</p-accordion>
+</section>

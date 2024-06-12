@@ -1,0 +1,167 @@
+<section class="main-content">
+	<ul class="breadcrumb breadcrumb-style">
+		<li class="breadcrumb-item">
+			<h5 class="page-title m-b-0">Admin</h5>
+		</li>
+		<li class="breadcrumb-item bcrumb-1">
+			<a routerLink="/dashboard/main"> <i class="fas fa-home font-17"></i></a>
+		</li>
+		<li class="breadcrumb-item">Subject target setting</li>
+	</ul>
+	<div class="section-body">
+		<p-card header="Subject target setting" [style]="{ border: '1px solid #e0e0e0', 'border-radius': '0' }">
+			<div class="p-10">
+				<form [formGroup]="subjectTargetSettingForm" *ngIf="subjectTargetSettingForm">
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+							<label>Academic Year<span class="text-danger">*</span></label>
+							<p-dropdown
+								[options]="academicYears"
+								formControlName="currentAcademicYear"
+								optionLabel="name"
+								class="p-inputtext-sm"
+								optionValue="id"
+								[style]="{ width: '100%' }"
+								appendTo="body"
+							>
+								<div [style]="{ width: '100%' }">
+									<ng-template let-item pTemplate="item">
+										{{ item.name }}
+									</ng-template>
+								</div>
+							</p-dropdown>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+							<label>Academic Levels<span class="text-danger">*</span></label>
+							<p-dropdown
+								[options]="academicLevels"
+								formControlName="academicLevel"
+								optionLabel="name"
+								class="p-inputtext-sm"
+								optionValue="id"
+								[style]="{ width: '100%' }"
+								placeholder="Select Academic Level"
+								appendTo="body"
+								(onChange)="getSubjectsByAcademicLevelId()"
+							>
+								<div [style]="{ width: '100%' }">
+									<ng-template let-item pTemplate="item">
+										{{ item.name }}
+									</ng-template>
+								</div>
+							</p-dropdown>
+							<small
+								class="form-text text-danger"
+								*ngIf="
+									!subjectTargetSettingForm.get('academicLevel').valid &&
+									subjectTargetSettingForm.get('academicLevel').touched
+								"
+							>
+								Please Select cademic Level</small
+							>
+						</div>
+						<div
+							class="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+							*ngIf="academicLevelId > 0 && subjects.length > 0"
+							[@fadeInOut]="academicLevelId > 0 && subjects.length > 0 ? 'in' : 'out'"
+						>
+							<label>Subjects<span class="text-danger">*</span></label>
+							<p-dropdown
+								[options]="subjects"
+								formControlName="subject"
+								optionLabel="name"
+								class="p-inputtext-sm"
+								optionValue="id"
+								[style]="{ width: '100%' }"
+								placeholder="Select Subject"
+								appendTo="body"
+							>
+								<div [style]="{ width: '100%' }">
+									<ng-template let-item pTemplate="item">
+										{{ item.name }}
+									</ng-template>
+								</div> </p-dropdown
+							><small
+								class="form-text text-danger"
+								*ngIf="
+									!subjectTargetSettingForm.get('subject').valid && subjectTargetSettingForm.get('subject').touched
+								"
+							>
+								Please Select Subject</small
+							>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pt-1">
+							<label>Exam Type <span class="text-danger">*</span></label>
+							<p-dropdown
+								[options]="examTypes"
+								formControlName="examTypeId"
+								optionLabel="name"
+								class="p-inputtext-sm"
+								optionValue="id"
+								[style]="{ width: '100%' }"
+								placeholder="Select Exam"
+								appendTo="body"
+							>
+								<div [style]="{ width: '100%' }">
+									<ng-template let-item pTemplate="item">
+										{{ item.name }}
+									</ng-template>
+								</div>
+							</p-dropdown>
+							<small
+								class="form-text text-danger"
+								*ngIf="
+									!subjectTargetSettingForm.get('examTypeId').valid &&
+									subjectTargetSettingForm.get('examTypeId').touched
+								"
+							>
+								Please select exam type</small
+							>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pt-1">
+							<label>Semester<span class="text-danger">*</span></label>
+							<p-dropdown
+								[options]="semesters"
+								formControlName="currentSemester"
+								optionLabel="name"
+								class="p-inputtext-sm"
+								optionValue="id"
+								[style]="{ width: '100%' }"
+								placeholder="Select Semester"
+								appendTo="body"
+							>
+								<div [style]="{ width: '100%' }">
+									<ng-template let-item pTemplate="item">
+										{{ item.name }}
+									</ng-template>
+								</div>
+							</p-dropdown>
+							<small
+								class="form-text text-danger"
+								*ngIf="
+									!subjectTargetSettingForm.get('currentSemester').valid &&
+									subjectTargetSettingForm.get('currentSemester').touched
+								"
+							>
+								Please Select Semester</small
+							>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pt-4">
+							<button
+								type="button"
+								class="btn btn-primary"
+								[disabled]="!subjectTargetSettingForm.valid"
+								(click)="saveSubjectTargetSettingConfiguration()"
+							>
+								Configure Target Setting
+							</button>
+						</div>
+					</div>
+					<div class="row col-6 pt-5" *ngIf="progressBarVisible === ture">
+						<p-progressBar [value]="precentage"></p-progressBar>
+					</div>
+				</form>
+			</div>
+		</p-card>
+	</div>
+</section>
